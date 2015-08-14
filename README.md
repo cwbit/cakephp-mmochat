@@ -64,9 +64,10 @@ Channel prefix displayed as either short or full channel name
 Patterns for the channel display are customizable
 
 ```
- [:c] :u > :msg        [g] a_user > hello, world
- [:cc] :u > :msg       [guild] a_user > hello, world
- :t [:cc] :u > :msg    14:35 [guild] a_user > hello, world
+ [:c] :u > :msg             [g] a_user > hello, world
+ [:cc] :u > :msg            [guild] a_user > hello, world
+ :t [:cc] :u > :msg         14:35 [guild] a_user > hello, world
+ :#808000 [:c] [:u] - :msg  (green) [g] a_user - hello, world
 ```
 
 Valid options for the channel display are
@@ -76,6 +77,7 @@ Valid options for the channel display are
 * `:cc` channel full name
 * `:u` user name
 * `:msg` the message
+* `:#..` the chat color (default `#000000`)
 
 ##### Understanding channels
 
@@ -86,7 +88,7 @@ Channels are implemented at two levels
 
 Put differently, each channel is both a concept (i.e. I'm in local chat in this zone) as well as an actual unique channel (i.e. local chat in this zone maps to `:zone-local`). This allows us to have multiple `local` channels - ie. a local chat channel in each zone that are not shared between zones.
 
-This is accomplished by mapping each channel to a unique Node.js room.
+This is accomplished by mapping each channel to a unique Node.js room - i.e a location's `uuid`.
 
 ##### Joining a Channel
 
